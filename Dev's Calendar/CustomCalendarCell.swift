@@ -17,7 +17,22 @@ class CustomCalendarCell: JTAppleCell {
         lbl.textColor = .black
         return lbl
     }()
-
+    var selectedView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 15
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    var eventDotView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCell()
@@ -28,10 +43,18 @@ class CustomCalendarCell: JTAppleCell {
     }
     
     private func setupCell() {
+        addSubview(selectedView)
         addSubview(dateLabel)
+        addSubview(eventDotView)
         
+        selectedView.dropShadow()
+        
+        addContraintsWithFormat(format: "H:|-15-[v0(30)]", views: selectedView)
+        addContraintsWithFormat(format: "V:|-5-[v0(30)]", views: selectedView)
         addContraintsWithFormat(format: "H:|[v0]|", views: dateLabel)
         addContraintsWithFormat(format: "V:|[v0]|", views: dateLabel)
+        addContraintsWithFormat(format: "H:|-30-[v0(2)]", views: eventDotView)
+        addContraintsWithFormat(format: "V:[v0(2)]-5-|", views: eventDotView)
     }
     
 }
