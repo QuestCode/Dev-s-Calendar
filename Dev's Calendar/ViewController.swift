@@ -63,6 +63,10 @@ class ViewController: UIViewController {
         self.view.backgroundColor = backgroundColor
         
         self.calendarView = JTAppleCalendarView()
+        self.calendarView.scrollDirection = .horizontal
+        self.calendarView.showsHorizontalScrollIndicator = false
+        self.calendarView.isScrollEnabled = true
+        self.calendarView.isPagingEnabled = true
         self.calendarView.minimumLineSpacing = 0
         self.calendarView.minimumInteritemSpacing = 0
         self.calendarView.calendarDelegate = self

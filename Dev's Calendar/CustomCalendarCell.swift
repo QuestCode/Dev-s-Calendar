@@ -28,6 +28,7 @@ class CustomCalendarCell: JTAppleCell {
     
     var eventDotView: UIView = {
         let view = UIView()
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
         return view
